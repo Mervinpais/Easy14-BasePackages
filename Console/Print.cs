@@ -1,30 +1,24 @@
-//_params = line, newLine
-if (ItemChecks.IsString(line))
+//_params = line
+if (line.EndsWith(";") || line.EndsWith(")") || line.EndsWith(");"))
 {
-    line = line.Substring(1, line.Length - 2);
-
-    Console.WriteLine(line);
-
-    return;
-}
-else if (line.EndsWith(";") || line.EndsWith(")") || line.EndsWith(");"))
-{
-    if (!line.EndsWith(";")) line = $"{line};";
+    if (!line.EndsWith(";")) 
+    { 
+        line = $"{line};";
+    }
+    
     Program prog = new Program();
     Console.WriteLine(prog.ExternalComplieCode(null, new string[] { line }));
+}
+else if (ItemChecks.IsString(line))
+{
+    line = line.Substring(1, line.Length - 2);
+    Console.WriteLine(line);
+    return;
 }
 else if (VariableCode.variableList.ContainsKey(line))
 {
     Console.WriteLine(VariableCode.variableList[line]);
 }
-/*else
-{
-    try
-    {
-        Console.WriteLine(new DataTable().Compute(line, ""));
-    }
-    catch
-    {
-
-    }
-}*/
+else {
+    Console.WriteLine("ERROR:> Unknown Print Parameter");
+}
