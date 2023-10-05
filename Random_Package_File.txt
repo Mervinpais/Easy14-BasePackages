@@ -1,0 +1,10 @@
+{
+  "packageName": "Random",
+  "files": [
+{
+  "Type": "cs",
+  "FileName": "Range.cs",
+  "Content": "//_params = min , max\r\n\r\ntry\r\n{\r\n  Random rnd = new Random();\r\n  int randomNumber = rnd.Next(min, max);\r\n  return randomNumber;\r\n}\r\ncatch { throw new Exception(\"Not valid Integers\"); }\r\n"
+}
+]
+}

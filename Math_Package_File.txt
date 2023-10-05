@@ -1,0 +1,25 @@
+{
+  "packageName": "Math",
+  "files": [
+{
+  "Type": "cs",
+  "FileName": "Add.cs",
+  "Content": "//_params = a,b\r\n\r\nusing System;\r\nreturn a + b;"
+},
+{
+  "Type": "cs",
+  "FileName": "Divide.cs",
+  "Content": "//_params = a,b\r\n\r\nusing System;\r\n\r\nreturn a / b;"
+},
+{
+  "Type": "cs",
+  "FileName": "Multiply.cs",
+  "Content": "//_params = a,b\r\n\r\nusing System;\r\n\r\nreturn a * b;"
+},
+{
+  "Type": "cs",
+  "FileName": "Substract.cs",
+  "Content": "//_params = a,b\r\n\r\nusing System;\r\n\r\nreturn a - b;"
+}
+]
+}

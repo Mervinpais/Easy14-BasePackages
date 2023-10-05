@@ -1,0 +1,40 @@
+{
+  "packageName": "Console",
+  "files": [
+{
+  "Type": "cs",
+  "FileName": "Beep.cs",
+  "Content": "//_params = line\r\nif (Regex.IsMatch(line, @\"^\\d+$\"))\r\n{\r\n    int frequency = Convert.ToInt32(line.Split(' ')[0]);\r\n    int duration = Convert.ToInt32(line.Split(' ')[1]) * 1000; //NOTE; 1 second = 1000 ms and Console.Beep uses miliseconds\r\n\r\n    if (frequency > 32767 || frequency < 37)\r\n    {\r\n        Console.Beep(2000, duration); //Default\r\n        return;\r\n    }\r\n\r\n    Console.Beep(frequency, duration);\r\n    return;\r\n}"
+},
+{
+  "Type": "cs",
+  "FileName": "Clear.cs",
+  "Content": "Console.Clear();"
+},
+{
+  "Type": "cs",
+  "FileName": "Exec.cs",
+  "Content": "//_params = line\r\nif (line == null) { return; }\r\n\r\nif (ItemChecks.IsString(line))\r\n{\r\n    Program prog = new Program();\r\n    prog.ExternalCompileCode(textArray: new string[] { line.Substring(1, line.Length - 2) } );\r\n}\r\nelse\r\n{\r\n    if (VariableCode.variableList.TryGetValue(line, out _) == true)\r\n    {\r\n        VariableCode.variableList.TryGetValue(line, out object val);\r\n        Program prog = new Program();\r\n        prog.ExternalCompileCode(textArray: new string[] { val.ToString() });\r\n    }\r\n    else\r\n    {\r\n        ErrorReportor.ConsoleLineReporter.Error(\"Failed to get variable \\'\" + line + \"\\', make sure variable exists.\");\r\n        return;\r\n    }\r\n}"
+},
+{
+  "Type": "cs",
+  "FileName": "GetKeyPress.cs",
+  "Content": "//_params = item\r\n\r\nConsoleKeyInfo key = Console.ReadKey(true);\r\nif (item == \"Key\") return key.Key;\r\nelse if (item == \"Char\") return key.KeyChar;\r\nelse if (item == \"Modifiers\") return key.Modifiers;\r\nelse return key;"
+},
+{
+  "Type": "cs",
+  "FileName": "Input.cs",
+  "Content": "//_params = line\r\n\r\nif (line == \"\")\r\n{\r\n    Console.Write(\"> \", false);\r\n    string returnedInput = Console.ReadLine();\r\n\r\n    if (!returnedInput.StartsWith(\"\\\"\")) returnedInput = \"\\\"\" + returnedInput;\r\n    if (!returnedInput.EndsWith(\"\\\"\")) returnedInput = returnedInput + \"\\\"\";\r\n\r\n    return returnedInput;\r\n}\r\nelse if (ItemChecks.IsString(line))\r\n{\r\n    line = line.Substring(1, line.Length - 2);\r\n    Console.WriteLine(line);\r\n    Console.Write(\"> \", false);\r\n    string returnedInput = Console.ReadLine();\r\n\r\n    if (!returnedInput.StartsWith(\"\\\"\")) returnedInput = \"\\\"\" + returnedInput;\r\n    if (!returnedInput.EndsWith(\"\\\"\")) returnedInput = returnedInput + \"\\\"\";\r\n\r\n    return returnedInput;\r\n}\r\nelse\r\n{\r\n    if (VariableCode.variables.TryGetValue(line, out var val))\r\n    {\r\n        Console.WriteLine(val);\r\n        Console.Write(\"> \", false);\r\n        string returnedInput = Console.ReadLine();\r\n\r\n        if (!returnedInput.StartsWith(\"\\\"\")) returnedInput = \"\\\"\" + returnedInput;\r\n        if (!returnedInput.EndsWith(\"\\\"\")) returnedInput = returnedInput + \"\\\"\";\r\n\r\n        return returnedInput;\r\n    }\r\n    else\r\n    {\r\n        ErrorReportor.ReportError(\"\" ,\"Failed to get variable \\'\" + line + \"\\', make sure variable exists.\");\r\n        return \"\";\r\n    }\r\n}"
+},
+{
+  "Type": "cs",
+  "FileName": "New.cs",
+  "Content": "System.Windows.Forms.Form form = new();\r\nform.Text = \"New window\";\r\nLabel label = new();\r\nlabel.Text = \"This is your first form!\";\r\nlabel.Size = new System.Drawing.Size(100,100);\r\nlabel.Location = new System.Drawing.Point(form.Size.Width / 2, form.Size.Height / 2);\r\nform.Controls.Add(label);\r\n//form.Show();\r\nApplication.Run(form);"
+},
+{
+  "Type": "cs",
+  "FileName": "Print.cs",
+  "Content": "//_params = line\r\nif (line.EndsWith(\";\") || line.EndsWith(\")\") || line.EndsWith(\");\"))\r\n{\r\n    if (!line.EndsWith(\";\")) \r\n    { \r\n        line = $\"{line};\";\r\n    }\r\n    if (line.EndsWith(\";;\"))\r\n    {\r\n        line = line.Substring(0, line.Length - 1);\r\n    }\r\n    Program prog = new Program();\r\n    Console.WriteLine(prog.ExternalCompileCode(null, new string[] { line }));\r\n}\r\nelse if (ItemChecks.IsString(line))\r\n{\r\n    line = line.Substring(1, line.Length - 2);\r\n    Console.WriteLine(line);\r\n    return;\r\n}\r\nelse {\r\n    Console.WriteLine(\"ERROR:> Unknown Print Parameter\");\r\n}\r\n"
+}
+]
+}

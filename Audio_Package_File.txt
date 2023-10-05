@@ -1,0 +1,15 @@
+{
+  "packageName": "Audio",
+  "files": [
+{
+  "Type": "cs",
+  "FileName": "Play.cs",
+  "Content": "//_params = audioFileToPlay\r\n\r\ntry\r\n{\r\n    SoundPlayer soundPlayer = new SoundPlayer(audioFileToPlay.Substring(1,audioFileToPlay.Length -2));\r\n    soundPlayer.Load();\r\n    AudioPlayers.Add(AudioPlayers.Count+1, soundPlayer);\r\n    soundPlayer.Play();\r\n}\r\ncatch (Exception ex)\r\n{\r\n    Console.WriteLine($\"Error; {ex.Message}\");\r\n}\r\nreturn;"
+},
+{
+  "Type": "cs",
+  "FileName": "Stop.cs",
+  "Content": "//_params = indexOfAudioPlayer\r\n\r\ntry\r\n{\r\n    AudioPlayers[indexOfAudioPlayer].Stop();\r\n}\r\ncatch (Exception)\r\n{\r\n    ErrorReportor.ConsoleLineReporter.Error(\"Failed to stop audio\");\r\n}\r\n\r\nreturn;"
+}
+]
+}

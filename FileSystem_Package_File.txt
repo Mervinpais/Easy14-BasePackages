@@ -1,0 +1,50 @@
+{
+  "packageName": "FileSystem",
+  "files": [
+{
+  "Type": "cs",
+  "FileName": "DeleteDirectory.cs",
+  "Content": "//_params = dir\r\n\r\ntry\r\n{\r\n    Directory.Delete(dir, true);\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); }"
+},
+{
+  "Type": "cs",
+  "FileName": "DeleteFile.cs",
+  "Content": "//_params = file\r\n\r\ntry\r\n{\r\n    File.Delete(file);\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); }"
+},
+{
+  "Type": "cs",
+  "FileName": "MakeDirectory.cs",
+  "Content": "//_params = dir\r\n\r\ntry\r\n{\r\n    Directory.CreateDirectory(dir);\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); }"
+},
+{
+  "Type": "cs",
+  "FileName": "MakeFile.cs",
+  "Content": "//_params = file\r\n\r\ntry\r\n{\r\n    File.WriteAllText(file, \"\");\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); }"
+},
+{
+  "Type": "cs",
+  "FileName": "MoveFile.cs",
+  "Content": "//_params = filePath, newPath\r\n\r\ntry\r\n{\r\n    File.Move(filePath, newPath);\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); }"
+},
+{
+  "Type": "cs",
+  "FileName": "ReadAllLines.cs",
+  "Content": "//_params = file\r\n\r\ntry\r\n{\r\n    return File.ReadAllLines(file);\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); return null; }"
+},
+{
+  "Type": "cs",
+  "FileName": "ReadFile.cs",
+  "Content": "//_params = file\r\n\r\ntry\r\n{\r\n    return File.ReadAllText(file);\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); return null; }"
+},
+{
+  "Type": "cs",
+  "FileName": "RenameFile.cs",
+  "Content": "//_params = fileName, newName\r\n\r\npublic static void Interperate(string fileName, string newName)\r\n{\r\n    try\r\n    {\r\n        File.Move(fileName, newName);\r\n    }\r\n    catch (Exception ex)\r\n    {\r\n        Console.WriteLine(ex.Message);\r\n    }\r\n}"
+},
+{
+  "Type": "cs",
+  "FileName": "WriteFile.cs",
+  "Content": "//_params = file, content\r\n\r\ntry\r\n{\r\n    File.WriteAllText(file, content);\r\n}\r\ncatch (Exception ex) { Console.WriteLine(ex.Message); }"
+}
+]
+}

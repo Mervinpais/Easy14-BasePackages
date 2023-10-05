@@ -1,0 +1,20 @@
+{
+  "packageName": "Time",
+  "files": [
+{
+  "Type": "cs",
+  "FileName": "IsLeapYear.cs",
+  "Content": "//_params = date\r\n\r\nreturn DateTime.IsLeapYear(Convert.ToInt32(date));"
+},
+{
+  "Type": "cs",
+  "FileName": "Now.cs",
+  "Content": "DateTime date = DateTime.Now;\r\nstring date_str = Convert.ToString(date);\r\nreturn date_str;"
+},
+{
+  "Type": "cs",
+  "FileName": "Wait.cs",
+  "Content": "//_params = line\r\n\r\nif (!ItemChecks.IsInt(line)) { return; }\r\n\r\ntry { Thread.Sleep(Convert.ToInt32(line) * 1000); }\r\ncatch (Exception e) { ErrorReportor.ConsoleLineReporter.Error(e.Message); }"
+}
+]
+}

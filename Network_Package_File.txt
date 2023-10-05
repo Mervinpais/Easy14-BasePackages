@@ -1,0 +1,10 @@
+{
+  "packageName": "Network",
+  "files": [
+{
+  "Type": "cs",
+  "FileName": "Ping.cs",
+  "Content": "//_params = address\r\ntry\r\n{\r\n    Ping ping = new Ping();\r\n    if (ItemChecks.DetectType(address) == \"str\") address = address.Substring(1, address.Length - 2);\r\n    return ping.Send(address).Status;\r\n}\r\ncatch (Exception ex)\r\n{\r\n    Console.WriteLine(ex.Message); return IPStatus.Unknown;\r\n}"
+}
+]
+}
