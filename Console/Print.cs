@@ -1,24 +1,15 @@
-//_params = line
-if (line.EndsWith(";") || line.EndsWith(")") || line.EndsWith(");"))
+public class MyClass
 {
-    if (!line.EndsWith(";")) 
-    { 
-        line = $"{line};";
+    public static void PrintLine(string line)
+    {
+        if (line.StartsWith("\"") && line.EndsWith("\""))
+        {
+            line = line.Substring(1, line.Length - 2);
+            Console.WriteLine(line);
+        }
+        else
+        {
+            Console.WriteLine("ERROR:> Unknown Print Parameter");
+        }
     }
-    
-    Program prog = new Program();
-    Console.WriteLine(prog.ExternalComplieCode(null, new string[] { line }));
-}
-else if (ItemChecks.IsString(line))
-{
-    line = line.Substring(1, line.Length - 2);
-    Console.WriteLine(line);
-    return;
-}
-else if (VariableCode.variableList.ContainsKey(line))
-{
-    Console.WriteLine(VariableCode.variableList[line]);
-}
-else {
-    Console.WriteLine("ERROR:> Unknown Print Parameter");
 }
